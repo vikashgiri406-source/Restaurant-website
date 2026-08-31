@@ -242,10 +242,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Close modals on backdrop click
   document.querySelectorAll('.modal-overlay').forEach((overlay) => {
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) closeModal(overlay);
     });
+  });
+
+  // Close modals on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const activeModal = document.querySelector('.modal-overlay.active');
+      if (activeModal) closeModal(activeModal);
+    }
   });
 
   // --- 5. Table Booking / Reservation System ---
